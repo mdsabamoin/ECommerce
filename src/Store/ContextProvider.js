@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDom from "react-dom";
+// import ReactDom from "react-dom";
 const Context = React.createContext({
     ProductsArr: [{
         title: 'Colors',
@@ -22,13 +22,36 @@ const Context = React.createContext({
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
 
     }],
-    setProductsArr: () => { }
+    cartElements:[
+        {
+        title: 'Colors',
+        price: 100,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+        quantity: 2,
+        },
+        {
+        title: 'Black and white Colors',
+        price: 50,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+        quantity: 3,
+        },
+        {
+        title: 'Yellow and Black Colors',
+        price: 70,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+        quantity: 1,     
+        } 
+        ],
+     isCart:false,
+     setIsCart:()=>{},   
+    setProductsArr: () => { },
+    setCartElements:()=>{}
 
 })
 
 
 const ContextProvider = (props) => {
-
+     const [isCart,setIsCart] = useState(false);
     const [ProductsArr, setProductsArr] = useState( [{
         title: 'Colors',
         price: 100,
@@ -51,8 +74,31 @@ const ContextProvider = (props) => {
 
     }]);
 
-    return <Context.Provider value={{ ProductsArr, setProductsArr }}>{props.children}</Context.Provider>
+    const [cartElements,setCartElements] = useState([
+
+        {
+        title: 'Colors',
+        price: 100,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+        quantity: 2,
+        },
+        {
+        title: 'Black and white Colors',
+        price: 50,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+        quantity: 3,
+        }, 
+        {
+        title: 'Yellow and Black Colors',
+        price: 70,
+        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+        quantity: 1,
+        }
+        
+        ])
+
+    return <Context.Provider value={{ ProductsArr,cartElements,isCart,setIsCart,setCartElements,setProductsArr }}>{props.children}</Context.Provider>
 
 }
-export { Context, ContextProvider };
+export  { Context, ContextProvider };
 
