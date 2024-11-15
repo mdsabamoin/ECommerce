@@ -1,0 +1,17 @@
+/* Add this to your CSS file */
+.image-zoom {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+  
+  .image-zoom img {
+    width: 50%;
+    transition: transform 0.8s ease; /* Smooth transition for scaling */
+  }
+  
+  .image-zoom:hover img {
+    transform: scale(1.4); /* Scale the image up by 10% on hover */
+    cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+  }
+  
