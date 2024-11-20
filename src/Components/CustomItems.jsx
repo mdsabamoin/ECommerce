@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { Button, Container, Image } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,26 +10,27 @@ import axios from "axios";
 const CustomItems = () => {
     const ctx = useContext(Context);
 
-    const MusicLoadingHandler = async ()=>{
-        try{
-            ctx.setIsLoading(true);
-            ctx.setError(null);
-            const response = await axios.get("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
-            if(response.status !== 200){
-                throw new Error("Something went wrong")
-            }
-            console.log(response);
-            const data =  response.data;
-            ctx.setProductsArr(data);
-            ctx.setIsLoading(false);
-        }catch(error){
-            ctx.setError(error.message)
-            ctx.setIsLoading(false);
-        }
-       
-    }
+        useEffect(()=>{
+          const fetchData = async ()=>{
+                try{
+                    ctx.setIsLoading(true);
+                    ctx.setError(null);
+                    const response = await axios.get("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
+                    if(response.status !== 200){
+                        throw new Error("Something went wrong")
+                    }
+                    console.log(response);
+                    const data =  response.data;
+                    ctx.setProductsArr(data);
+                    ctx.setIsLoading(false);
+                }catch(error){
+                    ctx.setError(error.message)
+                    ctx.setIsLoading(false);
+                }
+               
+            } 
+            fetchData()},[]) 
     return <Container>
-        {ctx.ProductsArr.length == 0 && <Button onClick={MusicLoadingHandler}>Get Music</Button>}
         {ctx.error !== null && <p>{ctx.error}</p>}
         {ctx.isLoading && ctx.ProductsArr.length == 0 && ctx.error == null && <h1>Loading....</h1>}
         {!ctx.isLoading && ctx.ProductsArr.length>0 && ctx.error == null && <h2 bg="light" className="fs-1">Music</h2>}
