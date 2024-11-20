@@ -4,20 +4,36 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Context } from "../Store/ContextProvider";
 import "./CustomItems.css";
+import axios from "axios";
 // import Image from "react-bootstrap"
 
 const CustomItems = () => {
     const ctx = useContext(Context);
 
     const MusicLoadingHandler = async ()=>{
-       const response = await fetch("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
-       const data = await response.json()
-       ctx.setProductsArr(data);
+        try{
+            ctx.setIsLoading(true);
+            ctx.setError(null);
+            const response = await axios.get("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
+            if(response.status !== 200){
+                throw new Error("Something went wrong")
+            }
+            console.log(response);
+            const data =  response.data;
+            ctx.setProductsArr(data);
+            ctx.setIsLoading(false);
+        }catch(error){
+            ctx.setError(error.message)
+            ctx.setIsLoading(false);
+        }
+       
     }
     return <Container>
         {ctx.ProductsArr.length == 0 && <Button onClick={MusicLoadingHandler}>Get Music</Button>}
-        {ctx.ProductsArr.length>0 && <h2 bg="light" className="fs-1">Music</h2>}
-        {ctx.ProductsArr.length>0 &&<Row className="mt-5">
+        {ctx.error !== null && <p>{ctx.error}</p>}
+        {ctx.isLoading && ctx.ProductsArr.length == 0 && ctx.error == null && <h1>Loading....</h1>}
+        {!ctx.isLoading && ctx.ProductsArr.length>0 && ctx.error == null && <h2 bg="light" className="fs-1">Music</h2>}
+        {!ctx.isLoading && ctx.ProductsArr.length>0 && ctx.error == null && <Row className="mt-5">
             {ctx.ProductsArr.map((item, index) =>
             (<Col sm={12} md={6} lg={6} key={index}>
                 <h3>{item.title}</h3>

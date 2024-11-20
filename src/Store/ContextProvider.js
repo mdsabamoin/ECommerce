@@ -20,9 +20,13 @@ const Context = React.createContext({
         } 
         ],
      isCart:false,
+     isLoading:false,
+     error:null,
      quantity:0,
      price:0,
      setPrice:()=>{},
+     setIsLoading:()=>{},
+     setError:()=>{},
      setQuantity:()=>{},
      setIsCart:()=>{},   
     setProductsArr: () => { },
@@ -35,11 +39,12 @@ const ContextProvider = (props) => {
      const [isCart,setIsCart] = useState(false);
     const [price,setPrice] = useState(0);
     const [ProductsArr, setProductsArr] = useState([]);
-
+    const [isLoading,setIsLoading] = useState(false);
+    const [error,setError] = useState(null);
     const [cartElements,setCartElements] = useState([]);
     const [quantity,setQuantity] = useState(1);
 
-    return <Context.Provider value={{ ProductsArr,cartElements,isCart,quantity,price,setPrice,setQuantity,setIsCart,setCartElements,setProductsArr }}>{props.children}</Context.Provider>
+    return <Context.Provider value={{ ProductsArr,isLoading,error,cartElements,isCart,quantity,price,setIsLoading,setError,setPrice,setQuantity,setIsCart,setCartElements,setProductsArr }}>{props.children}</Context.Provider>
 
 }
 export  { Context, ContextProvider };
