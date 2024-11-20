@@ -8,9 +8,16 @@ import "./CustomItems.css";
 
 const CustomItems = () => {
     const ctx = useContext(Context);
+
+    const MusicLoadingHandler = async ()=>{
+       const response = await fetch("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
+       const data = await response.json()
+       ctx.setProductsArr(data);
+    }
     return <Container>
-        <h2 bg="light" className="fs-1">Music</h2>
-        <Row className="mt-5">
+        {ctx.ProductsArr.length == 0 && <Button onClick={MusicLoadingHandler}>Get Music</Button>}
+        {ctx.ProductsArr.length>0 && <h2 bg="light" className="fs-1">Music</h2>}
+        {ctx.ProductsArr.length>0 &&<Row className="mt-5">
             {ctx.ProductsArr.map((item, index) =>
             (<Col sm={12} md={6} lg={6} key={index}>
                 <h3>{item.title}</h3>
@@ -38,7 +45,7 @@ const CustomItems = () => {
             </Col>
             ))}
 
-        </Row>
+        </Row>}
     </Container>
 }
 
