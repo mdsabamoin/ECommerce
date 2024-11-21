@@ -15,7 +15,7 @@ const CustomItems = () => {
                 try{
                     ctx.setIsLoading(true);
                     ctx.setError(null);
-                    const response = await axios.get("https://crudcrud.com/api/0eccbcaa852345aead88409bdca0c3ca/ecommerce")
+                    const response = await axios.get("https://crudcrud.com/api/b33498896a4148ae8283e3973954743e/ecommerce")
                     if(response.status !== 200){
                         throw new Error("Something went wrong")
                     }

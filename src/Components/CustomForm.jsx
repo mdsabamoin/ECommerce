@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-
+import axios from "axios";
 
 
 const CustomForm = ()=>{
@@ -20,16 +20,29 @@ const ReleaseDateHandler = (event) =>{
 const OpeningTextHandler = (event) =>{
     setOpeningText(event.target.value)
 }
-
-  const FormHandler = (event)=>{
-    event.preventDefault();
-    const obj={"title":title,"releaseDate":releaseDate,"openingText":openingText};
-    console.log(obj);
-    setTitle("");
-    setOpeningText("");
-    setReleaseDate("");
-    
+   let obj;
+const FormHandler = (event)=>{
+  event.preventDefault();
+   obj={"title":title,"releaseDate":releaseDate,"openingText":openingText};
+  console.log(obj);
+  try{
+    const postData = async () => {
+      const response = await axios.post("https://crudcrud.com/api/b33498896a4148ae8283e3973954743e/ecommerce",obj)
+      console.log(response.data);
+    }
+    postData()
   }
+  catch(error){
+    console.log(error.message);
+  }
+  setTitle("");
+  setOpeningText("");
+  setReleaseDate("");
+  
+}
+
+
+
  
 
 
