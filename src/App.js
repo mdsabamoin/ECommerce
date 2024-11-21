@@ -7,6 +7,7 @@ import CustomAbout from './Components/CustomAbout';
 import Stored from './Components/Stored';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
+import CustomForm from './Components/CustomForm';
 function App() {
      
   const AlwaysDisplay = <div><CustomNavbar/><h1  className="bg-secondary text-light glowing-text" style={{height:"130px",fontSize: '6rem'}}>The Generics</h1></div>
@@ -15,7 +16,8 @@ function App() {
    const router = createBrowserRouter([
     {path:"/about" , element:<div>{AlwaysDisplay}<CustomAbout/>{LastContent}</div>},
     {path:"/",element:<div>{AlwaysDisplay}<CustomItems/>{LastContent}</div>},
-    {path:"/store",element:<div>{AlwaysDisplay}<Stored/>{LastContent}</div>}
+    {path:"/store",element:<div>{AlwaysDisplay}<Stored/>{LastContent}</div>},
+    {path:"/form",element:<div>{AlwaysDisplay}<CustomForm/>{LastContent}</div>}
  ])
   
   return (<div className='App'>
