@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import "../node_modules/react-bootstrap/dist/react-bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { ContextProvider } from './Store/ContextProvider';
+// import { FirebaseProvider } from './FireBase/FireBaseContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ContextProvider>
+    {/* <FirebaseProvider> */}
     <App />
+    {/* </FirebaseProvider> */}
     </ContextProvider>
 );
 

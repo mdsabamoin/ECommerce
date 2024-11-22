@@ -7,6 +7,7 @@ import CustomAbout from './Components/CustomAbout';
 import Stored from './Components/Stored';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
+import CustomContact from './Components/CustomContact';
 import CustomForm from './Components/CustomForm';
 function App() {
      
@@ -15,6 +16,7 @@ function App() {
        
    const router = createBrowserRouter([
     {path:"/about" , element:<div>{AlwaysDisplay}<CustomAbout/>{LastContent}</div>},
+    {path:"/contact" , element:<div>{AlwaysDisplay}<CustomContact/>{LastContent}</div>},
     {path:"/",element:<div>{AlwaysDisplay}<CustomItems/>{LastContent}</div>},
     {path:"/store",element:<div>{AlwaysDisplay}<Stored/>{LastContent}</div>},
     {path:"/form",element:<div>{AlwaysDisplay}<CustomForm/>{LastContent}</div>}

@@ -12,7 +12,7 @@ const Stored = () => {
     { date: "JUL27", place: "LAS VEGAS, NV", activity: "T-MOBILE ARENA" },
     { date: "JUL28", place: "CONCORD, CA", activity: "CONCORD PAVILION" },
     { date: "JUL16", place: "DETROIT,MI", activity: "DTE ENERGY MUSIC THEATRE" }]
-    return (<diV>
+    return (<div>
         <div className="bg-secondary text-light glowing-text" style={{ height: "130px", margin: "-20px" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
                 <Button variant="outline-info" style={{ height: "50px" }} className="text-light glowing-text">Get our Latest Album</Button>
@@ -37,7 +37,7 @@ const Stored = () => {
             </div>
         </Container>
 
-    </diV>
+    </div>
 
     )
 }
