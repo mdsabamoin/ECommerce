@@ -21,6 +21,7 @@ function CustomNavbar() {
                             <Nav.Link as={Link} to="/about" className='fs-3 m-3 text-white'>About</Nav.Link>
                             <Nav.Link as={Link} to="/contact" className='fs-3 m-3 text-white'>Contact Us</Nav.Link>
                             <Nav.Link as={Link} to="/form" className='fs-3 m-3 text-white'>Form</Nav.Link>
+                            <Nav.Link as={Link} to="/product" className='fs-3 m-3 text-white'>Product</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
