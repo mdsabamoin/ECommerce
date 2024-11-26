@@ -15,6 +15,7 @@ import CustomHoodie from './Components/Customhoodie';
 import CustomJeans from './Components/CustomJeans';
 import LoginNavbar from './Components/LoginNavbar';
 import CustomLogForm from './Components/CustomLogForm';
+import CustomProfile from './Components/CustomProfile';
 // import { Outlet } from 'react-router-dom';
 function App() {
      
@@ -27,7 +28,8 @@ function App() {
     {path:"/contact" , element:<div>{AlwaysDisplay}<CustomContact/>{LastContent}</div>},
     {path:"/home",element:<div>{AlwaysDisplay}<CustomItems/>{LastContent}</div>},
     {path:"/store",element:<div>{AlwaysDisplay}<Stored/>{LastContent}</div>},
-    {path:"/form",element:<div>{AlwaysDisplay}<CustomForm/>{LastContent}</div>},
+    // {path:"/form",element:<div>{AlwaysDisplay}<CustomForm/>{LastContent}</div>},
+    {path:"/profile",element:<div>{AlwaysDisplay}<CustomProfile/>{LastContent}</div>},
     {path:"/product", element:<div>{AlwaysDisplay}<CustomProduct/>{LastContent} </div>},
     {path:"/tshirt", element:<div>{AlwaysDisplay}<CustomTshirt/>{LastContent} </div>},
     {path:"/hoodie", element:<div>{AlwaysDisplay}<CustomHoodie/>{LastContent} </div>},

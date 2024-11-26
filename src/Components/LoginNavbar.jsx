@@ -13,9 +13,13 @@ const LoginNavbar = ()=>{
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/" className='fs-3 m-3 text-white'>Login</Nav.Link>
-                    <Nav.Link className='fs-3 m-3 text-white'>Profile</Nav.Link>
-                    <Nav.Link className='fs-3 m-3 text-white'>Logout</Nav.Link>
+                    <div  style ={{display:"flex",justifyContent:"space-between",flexDirection:"row"}}>
+                    <div><Nav.Link  className='fs-3 m-3 text-white'><h2>ECommerce</h2></Nav.Link></div>
+                    <div><Nav.Link as={Link} to="/" className='fs-3 m-3 text-white'>Login</Nav.Link></div>
+                    <Nav.Link className='fs-3 m-3 text-white'>Sign Up</Nav.Link>
+                    {/* <Nav.Link className='fs-3 m-3 text-white'>Logout</Nav.Link> */}
+                    </div>
+                    
                 </Nav>
             </Navbar.Collapse>
         </Container>

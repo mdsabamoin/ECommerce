@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-
+import {Context} from "../Store/ContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const CustomLogForm = () => {
-
+    const ctx = useContext(Context);
     const [email,setEmail] = useState("");
     const [password,setPass] = useState("");
     const [loading,setIsloading] = useState(false);
     const [login,setLogin] = useState(false);
+    const navigate = useNavigate();
+
+
     const SignUpHandler = async (event)=>{
        
        try{
@@ -44,9 +48,11 @@ const CustomLogForm = () => {
         const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD7sUmCwmx9dDxJGu9oehaoEmJKUtqm9k8",obj)
         const data = response.data;
         console.log(data);
+        ctx.setToken(data.idToken);
         setEmail("");
         setPass("");
         setIsloading(false);
+        navigate("/home")
        }catch(error){
         alert(error.response.data.error.message);
         // console.log(error.response);

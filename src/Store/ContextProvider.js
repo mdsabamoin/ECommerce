@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import ReactDom from "react-dom";
 const Context = React.createContext({
     ProductsArr: [],
+    Token:"",
     cartElements:[
         {
         title: 'Colors',
@@ -25,6 +26,7 @@ const Context = React.createContext({
      details:[],
      quantity:0,
      price:0,
+     setToken:()=>{},
      setPrice:()=>{},
      setDetails:()=>{},
      setIsLoading:()=>{},
@@ -46,8 +48,9 @@ const ContextProvider = (props) => {
     const [cartElements,setCartElements] = useState([]);
     const [quantity,setQuantity] = useState(1);
     const [details,setDetails] = useState([]);
+    const [Token,setToken] = useState("");
 
-    return <Context.Provider value={{ ProductsArr,isLoading,error,cartElements,isCart,details,quantity,price,setDetails,setIsLoading,setError,setPrice,setQuantity,setIsCart,setCartElements,setProductsArr }}>{props.children}</Context.Provider>
+    return <Context.Provider value={{ ProductsArr,isLoading,error,cartElements,Token,isCart,details,quantity,price,setToken,setDetails,setIsLoading,setError,setPrice,setQuantity,setIsCart,setCartElements,setProductsArr }}>{props.children}</Context.Provider>
 
 }
 export  { Context, ContextProvider };
