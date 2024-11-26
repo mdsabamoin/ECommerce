@@ -19,9 +19,33 @@ const CustomLogForm = () => {
         if(email && password){
             setIsloading(true);
         }
+        
         const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD7sUmCwmx9dDxJGu9oehaoEmJKUtqm9k8",obj)
         const data = response.data;
         console.log(data);
+        setEmail("");
+        setPass("");
+        setIsloading(false);
+       }catch(error){
+        alert(error.response.data.error.message);
+        // console.log(error.response);
+        setIsloading(false);
+       }
+
+    }
+    const SignInHandler = async (event)=>{
+       
+       try{
+        event.preventDefault();
+        const obj = {"email":email,"password":password};
+        if(email && password){
+            setIsloading(true);
+        }
+        const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD7sUmCwmx9dDxJGu9oehaoEmJKUtqm9k8",obj)
+        const data = response.data;
+        console.log(data);
+        setEmail("");
+        setPass("");
         setIsloading(false);
        }catch(error){
         alert(error.response.data.error.message);
@@ -51,7 +75,7 @@ const CustomLogForm = () => {
                 {!login && <Button variant="primary" type="submit" onClick={SignUpHandler}>
                     {loading && !login ?"Loading...":"Create Account"}
                 </Button>}
-                {login && <Button variant="primary" type="submit" onClick={SignUpHandler}>Login</Button>}
+                {login && <Button variant="primary" type="submit" onClick={SignInHandler}>Login</Button>}
                 <br/>
                 <Button variant="outline-info" style={{color:"white"}} onClick={LogHandler}>{login? "Create new Account":"Login with existing account"}</Button>
             </Form>
