@@ -51,7 +51,7 @@ function App() {
        const logNavbar = <div><LoginNavbar/></div>
    const router = createBrowserRouter([
     {path:"/" , element:<div>{!ctx.login && <div>{logNavbar}<CustomLogForm/>{LastContent}</div>}</div>},
-    {path:"/about" , element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomAbout/>{LastContent}</div>}</div>},
+    {path:"/about" , element:<div>{!ctx.login && <div>{logNavbar}<CustomAbout/>{LastContent}</div>}</div>},
     {path:"/contact" , element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomContact/>{LastContent}</div>}</div>},
     {path:"/home",element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomItems/>{LastContent}</div>}</div>},
     {path:"/store",element:<div>{ctx.login && <div>{AlwaysDisplay}<Stored/>{LastContent}</div>}</div>},

@@ -12,7 +12,8 @@ const CustomLogForm = () => {
     const [password,setPass] = useState("");
     const [loading,setIsloading] = useState(false);
     const navigate = useNavigate();
-    const [signUp,setsignUp] = useState(true);
+    const [signUp,setsignUp] = useState(false);
+    
 
 
     const SignUpHandler = async (event)=>{

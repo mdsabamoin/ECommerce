@@ -16,6 +16,7 @@ const LoginNavbar = ()=>{
                     <div  style ={{display:"flex",justifyContent:"space-between",flexDirection:"row"}}>
                     <div><Nav.Link  className='fs-3 m-3 text-white'><h2>ECommerce</h2></Nav.Link></div>
                     <div><Nav.Link as={Link} to="/" className='fs-3 m-3 text-white'>Login</Nav.Link></div>
+                    <div><Nav.Link as={Link} to="/about" className='fs-3 m-3 text-white'>About</Nav.Link></div>
                     <Nav.Link className='fs-3 m-3 text-white'>Sign Up</Nav.Link>
                     {/* <Nav.Link className='fs-3 m-3 text-white'>Logout</Nav.Link> */}
                     </div>

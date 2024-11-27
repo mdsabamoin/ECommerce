@@ -26,7 +26,7 @@ function CustomNavbar() {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/home" className='fs-3 m-3 text-white'>Home</Nav.Link>
                             <Nav.Link as={Link} to="/store" className='fs-3 m-3 text-white'>Store</Nav.Link>
-                            <Nav.Link as={Link} to="/about" className='fs-3 m-3 text-white'>About</Nav.Link>
+                            {/* <Nav.Link as={Link} to="/about" className='fs-3 m-3 text-white'>About</Nav.Link> */}
                             <Nav.Link as={Link} to="/contact" className='fs-3 m-3 text-white'>Contact Us</Nav.Link>
                             <Nav.Link as={Link} to="/profile" className='fs-3 m-3 text-white'>Profile</Nav.Link>
                             <Nav.Link as={Link} to="/product" className='fs-3 m-3 text-white'>Product</Nav.Link>
