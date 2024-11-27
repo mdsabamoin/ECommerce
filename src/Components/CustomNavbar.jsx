@@ -12,7 +12,9 @@ import axios from "axios";
 function CustomNavbar() {
    const ctx = useContext(Context);
     const HandleLogout =  ()=>{
-      ctx.setToken("");
+      localStorage.removeItem("Token");  
+      ctx.setToken(null);
+      ctx.setLogin(false);
     }
     
     return (
