@@ -49,9 +49,9 @@ const CustomLogForm = () => {
         const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD7sUmCwmx9dDxJGu9oehaoEmJKUtqm9k8",obj)
         const data = response.data;
         // const serialisedObj = JSON.stringify({"Token":data.idToken})
-        localStorage.setItem("Token",data.idToken);
+        localStorage.setItem("Token",email);
         ctx.setLogin(true);
-        console.log(data);
+        // console.log(data);
         
         ctx.setToken(data.idToken);
         setEmail("");

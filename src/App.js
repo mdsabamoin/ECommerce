@@ -33,20 +33,20 @@ function App() {
         }
       }, []); 
       
-      useEffect(()=>{
-        if(ctx.login){
-          setTimeout(() => {
-            localStorage.removeItem("Token");  
-          ctx.setToken(null);
-          ctx.setLogin(false);
-          window.location.replace("/")
-          }, 300000);
-        }
-      })
+      // useEffect(()=>{
+      //   if(ctx.login){
+      //     setTimeout(() => {
+      //       localStorage.removeItem("Token");  
+      //     ctx.setToken(null);
+      //     ctx.setLogin(false);
+      //     window.location.replace("/")
+      //     }, 300000);
+      //   }
+      // },[])
 
       
 
-  const AlwaysDisplay = <div><CustomNavbar/><h1  className="bg-secondary text-light glowing-text" style={{height:"130px",fontSize: '6rem'}}>The Generics</h1></div>
+  const AlwaysDisplay = <div><CustomNavbar/><h1  className="bg-secondary text-light glowing-text" style={{height:"130px",fontSize: '6rem',width:"100%"}}>The Generics</h1></div>
   const LastContent=   <Card.Footer className="bg-info text-dark glowing-text" style={{height:"60px",position:"fixed",width:"100%",padding:"10px 0",bottom:0,left:0,fontSize:"2rem"}}>Dummy Footer</Card.Footer>
        const logNavbar = <div><LoginNavbar/></div>
    const router = createBrowserRouter([

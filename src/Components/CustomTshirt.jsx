@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import "./CustomTshirt.css"
+import "./CustomTshirt.css"
 import Card from 'react-bootstrap/Card';
 import { CardBody } from "react-bootstrap";
 const CustomTshirt = () => {
@@ -19,7 +19,7 @@ const CustomTshirt = () => {
         setPhoto(<img src={urlpics} style={{marginBottom:"100px"}}/>)
     }
 
-    return <Container fluid style={{ display: "flex", padding: 0, margin: 0,justifyContent:"space-between"}}>
+    return <div><Container fluid style={{ display: "flex", padding: 0, margin: 0,justifyContent:"space-between"}}>
         <Row>
 
             <Col><Card style={{ width: '7rem' ,borderColor:"white"}}>
@@ -99,6 +99,7 @@ const CustomTshirt = () => {
             </Col>
         </Row>
     </Container>
+    </div>
 
 
 }

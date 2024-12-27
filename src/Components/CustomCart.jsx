@@ -5,19 +5,26 @@ import { Container } from 'react-bootstrap';
 import { useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 function CustomCart() {
   const ctx = useContext(Context);
 
-  const Quantityhandler = (event) => {
-
-    ctx.setQuantity(event.target.value);
+  const RemoveItemHandler = async(itemToremove)=>{
+      try{
+        const response = await axios.delete(`https://crudcrud.com/api/041b3c9c520f4c7386cdbcf28df85c3b/cartdanishmoin212gmailcom/${itemToremove._id}`)
+        const updatedCart = ctx.cartElements.filter((item)=>{return itemToremove.title !== item.title});
+        ctx.setCartElements(updatedCart);
+      }
+      catch(error){
+        alert("Cannot Delete");
+      }
   }
-  
-
   return (<div>
-    <Button variant="primary" className='mx-3' onClick={() => { ctx.setIsCart(true) }}>
+    <div>
+    <Button variant="primary" className='mx-3' onClick={() => { ctx.setIsCart(true) }} >
       Cart <Badge bg="secondary">{ctx.cartElements.length}</Badge>
     </Button>
+    </div>
 
     {ctx.isCart && <Container><div
       className="modal show"
@@ -40,23 +47,11 @@ function CustomCart() {
             <tbody>
               {ctx.cartElements.length > 0 && ctx.cartElements.map((item, index) => {
                 return <tr key={index}>
-                  <td><img src={`${item.imageUrl}`} style={{ width: "50px", height: "50px" }} />{item.title}</td>
+                  <td><img src={`${item.url}`} style={{ width: "50px", height: "50px" }} />{item.title}</td>
                   <td>{item.price}</td>
                   <td colSpan={1} style={{display:"flex",justifyContent:"space-around"}}><span>*{item.quantity}</span>
                     <Button 
-                    onClick={()=>{
-                        
-      
-                        ctx.setCartElements((previousState)=>{return previousState.map((CartItem)=>{
-                          if(CartItem.title == item.title)
-                          {
-                           return CartItem.quantity >1 ? {...CartItem,"quantity":CartItem.quantity-1}: null;
-                          } 
-                          return CartItem; 
-                        }).filter((item)=>item !== null)})
-                      
-                      
-                    }}
+                    onClick={()=>{RemoveItemHandler(item)}}
                     >Remove</Button>
                   </td>
                 </tr>

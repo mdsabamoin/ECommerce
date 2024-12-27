@@ -10,7 +10,7 @@ import {Link, useNavigate } from "react-router-dom";
 
 const CustomProduct = ()=>{
 
- return<div><Container>
+ return<div><Container >
            <Row>
                <Col><img src="https://placeit-img-1-p.cdn.aws.placeit.net/uploads/stage/stage_image/189089/optimized_product_thumb_stream.jpg" alt="unable to load" style={{width:"50%",height:"70%"}}/><div style={{marginTop:"10px"}}><Link to="/tshirt"><Button> View </Button></Link></div></Col>
                <Col><img src="https://placeit-img-1-p.cdn.aws.placeit.net/uploads/stage/stage_image/193945/optimized_product_thumb_m39562.jpg" alt="unable to load" style={{width:"50%",height:"70%"}}/><div style={{marginTop:"10px"}}><Link to="/hoodie"><Button>View</Button></Link></div></Col>
