@@ -9,18 +9,19 @@ import Card from 'react-bootstrap/Card';
 import { Button, CardText } from 'react-bootstrap';
 import CustomContact from './Components/CustomContact';
 import CustomForm from './Components/CustomForm';
-import CustomProduct from './Components/CustomProduct';
+// import CustomProduct from './Components/CustomProduct';
 import CustomTshirt from './Components/CustomTshirt';
 import CustomHoodie from './Components/Customhoodie';
 import CustomJeans from './Components/CustomJeans';
 import LoginNavbar from './Components/LoginNavbar';
 import CustomLogForm from './Components/CustomLogForm';
 import CustomProfile from './Components/CustomProfile';
-import { useContext, useEffect } from 'react';
+import { lazy, Suspense, useContext, useEffect } from 'react';
 import { Context } from './Store/ContextProvider';
 // import { Outlet } from 'react-router-dom';
 function App() {
     
+  const CustomProduct = lazy(()=>import('./Components/CustomProduct'));
       const ctx = useContext(Context);
       // const navigate = useNavigate();
       useEffect(() => {
@@ -57,7 +58,7 @@ function App() {
     {path:"/store",element:<div>{ctx.login && <div>{AlwaysDisplay}<Stored/>{LastContent}</div>}</div>},
     // {path:"/form",element:<div>{AlwaysDisplay}<CustomForm/>{LastContent}</div>},
     {path:"/profile",element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomProfile/>{LastContent}</div>}</div>},
-    {path:"/product", element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomProduct/>{LastContent} </div>}</div>},
+    {path:"/product", element:<div>{ctx.login && <div>{AlwaysDisplay}<Suspense fallback={<p>Loading...</p>}><CustomProduct/></Suspense>{LastContent} </div>}</div>},
     {path:"/tshirt", element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomTshirt/>{LastContent} </div>}</div>},
     {path:"/hoodie", element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomHoodie/>{LastContent} </div>}</div>},
     {path:"/jeans", element:<div>{ctx.login && <div>{AlwaysDisplay}<CustomJeans/>{LastContent} </div>}</div>}
